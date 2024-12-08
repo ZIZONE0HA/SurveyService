@@ -1,0 +1,14 @@
+.SurveyInventory{}
+
+.SurveyInventory .counter{
+    border-bottom: 1px solid #CCCCCC;
+    padding: 10px 10px;
+}
+
+.SurveyInventory .survey_wrapper{}
+.SurveyInventory .survey_wrapper .empty_message{
+    text-align: center;
+    margin-top: 200px;
+    line-height: 1.4;
+    color: #69717D;
+}

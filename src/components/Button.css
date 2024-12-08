@@ -2,15 +2,59 @@
     background-color: #F2F3F4;
     cursor: pointer;
     border: none;
-    border-radius: 20px;
+    border-radius: 30px;
     padding: 10px 15px;
     white-space: nowrap;
     color: #69717D;
-    /* font-weight: 600; */
-    /* font-size: 16px; */
+    box-sizing: border-box;
 }
 
 .Button_OPTION{
+    display: block;
+    margin: 0 auto;
     color: #fff;
     background-color: #69717D;
+}
+
+.Button_ICON{
+    padding: 5px;
+    background-color: transparent;
+}
+
+.Button_SUBMIT{
+    display: block;
+    margin: 0 auto;
+    width: 95%;
+    text-align: center;
+    border-radius: 10px;
+    background-color: #4880EE;
+    color: #fff;
+    font-size: 16px;
+    margin-bottom: 30px;
+    margin-top: 100px;
+}
+
+.Button_PLUS{
+    width: 40px;
+    height: 40px;
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    padding: 5px 5px;
+    display: block;
+    margin: 20px auto;
+    background-color: #69717D;
+    color: #fff;
+}
+.Button_PLUS>span{
+    line-height: 1; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+}
+
+.Button_DELETE{
+    border-radius: 5px;
+    padding: 5px 10px;
+    background-color: #E1E1E1;
 }

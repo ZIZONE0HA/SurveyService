@@ -1,0 +1,32 @@
+.OptionItem {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ddd;
+    margin-bottom: 5px;
+    height: 30px;
+    border-radius: 5px;
+}
+.OptionItem .type_box {
+    width: 30px;
+    height: 30px; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #F2F3F4;
+}
+
+.OptionItem .type_box input {
+    margin: 0px; 
+}
+
+.OptionItem input[type="text"] {
+    margin-top: 10px;
+    flex-grow: 1;
+    padding: 8px;
+    border: none;
+    /* border: 1px solid; */
+    height: 30px;
+    border-radius: 5px;
+    font-size: 14px;
+    outline: none;
+}

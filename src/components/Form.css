@@ -1,0 +1,28 @@
+.Form{
+    margin: 0 auto;
+    padding: 0 10px;;
+}
+.title_section, .period_section, .question_section {
+    margin-bottom: 20px;
+}
+
+h4{
+    margin-bottom: 10px;
+    font-size: 16px;
+    font-weight: bold;
+} 
+
+.input_box {
+    display: flex;
+    gap: 10px;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+

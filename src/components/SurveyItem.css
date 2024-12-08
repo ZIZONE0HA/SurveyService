@@ -1,0 +1,44 @@
+.SurveyItem{
+    display: flex;
+    justify-content: space-between;
+    padding: 25px 5px;
+    align-items: center;
+    cursor: pointer;
+}
+
+.SurveyItem .num_section{}
+
+.SurveyItem .num_section .num{
+    width: 25px;
+    height: 15px;
+    line-height: 15px;
+    padding: 5px;
+    background-color: #4880EE;
+    color: #fff;
+    text-align: center;
+    justify-content: center;
+}
+
+.SurveyItem .info_section{
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    box-sizing: border-box;
+    margin-left: 10px;
+    gap: 5px;
+    overflow: hidden;
+}
+.SurveyItem .info_section .title{
+    font-size: 18px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 1; 
+    -webkit-box-orient: vertical; 
+}
+.SurveyItem .info_section .period{
+    font-size: 14px;
+}
+
+.SurveyItem .button_section{
+}
