@@ -1,10 +1,10 @@
 import { useParams } from "react-router-dom";
-import Header from "../components/Header";
-import Button from "../components/Button";
+import Header from "../components/Header/Header";
+import Button from "../components/Button/Button";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { StateContext } from "../App";
-import Form from "../components/Form";
+import Form from "../components/Form/Form";
 
 const SurveyView = () => {
     const params = useParams();

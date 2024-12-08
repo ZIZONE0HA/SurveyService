@@ -1,5 +1,5 @@
-import Button from "./Button";
-import OptionList from "./OptionList";
+import Button from "../Button/Button";
+import OptionList from "../OptionList/OptionList";
 import './QuestionItem.css'
 
 const QuestionItem = ({question, onUpdateQuestion, onDeleteQuestion, optionIdRef, isReadOnly = false}) =>{

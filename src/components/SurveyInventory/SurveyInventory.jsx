@@ -1,5 +1,5 @@
 import './SurveyInventory.css'
-import SurveyItem from './SurveyItem';
+import SurveyItem from '../SurveyItem/SurveyItem';
 
 const SurveyInventory = ({data}) =>{
     

@@ -1,9 +1,10 @@
-import Header from "../components/Header";
-import Button from "../components/Button";
+import Header from "../components/Header/Header";
+import Button from "../components/Button/Button";
 import { useNavigate } from "react-router-dom";
-import Form from "../components/Form";
+import Form from "../components/Form/Form";
 import { useContext, useRef, useState } from "react";
 import { DispatchContext } from "../App";
+import Modal from "../components/Modal/Modal";
 
 const SurveyCreate = () => {   
 
@@ -11,6 +12,13 @@ const SurveyCreate = () => {
     const questionIdRef = useRef(1);  //질문 id
     const optionIdRef = useRef(1);  //옵션 id
     const { onCreateSurvey } = useContext(DispatchContext);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [modalContent, setModalContent] = useState({
+        message: "",
+        onConfirm: null,
+        onCancel: null,
+        buttons: [],
+    });
 
     const [surveyData, setSurveyData] = useState({
         title: "",
@@ -33,16 +41,28 @@ const SurveyCreate = () => {
                 required: true,
                 options: [
                     { id: 1, optionText: "" },
-                    { id: 2, optionText: "" },
                 ],
             },
         ],
     });
 
+
     //등록하기
     const onSubmitSurvey = () =>{
-        onCreateSurvey(surveyData); 
-        nav("/");
+        setModalContent({
+            message: "새로운 설문조사가 등록되었습니다.",
+            buttons: [
+                {
+                    text: "확인",
+                    onClick: () => {
+                        setIsModalOpen(false);
+                        onCreateSurvey(surveyData);
+                        nav("/");
+                    },
+                },
+            ],
+        });
+        setIsModalOpen(true);
     }
 
     //질문추가
@@ -67,6 +87,29 @@ const SurveyCreate = () => {
         }));
     }
 
+    // 뒤로가기 
+    const onBackClick = () => {
+        setModalContent({
+            message: "작성 중인 설문조사가 있습니다.\n취소하시겠습니까?",
+            buttons: [
+                {
+                    text: "아니오",
+                    onClick: () => {
+                        setIsModalOpen(false);
+                    },
+                },
+                {
+                    text: "예",
+                    onClick: () => {
+                        setIsModalOpen(false);
+                        nav(-1);
+                    },
+                },
+            ],
+        });
+        setIsModalOpen(true);
+    };
+
     return (
         <div>
         <Header title={"설문조사 등록"} leftChild={<Button
@@ -74,7 +117,7 @@ const SurveyCreate = () => {
                 arrow_back
                 </span>}
             type={"ICON"} 
-        onClick={()=>{nav(-1);}}/>}/>
+        onClick={onBackClick}/>}/>
 
         <Form
             surveyData={surveyData}
@@ -88,6 +131,13 @@ const SurveyCreate = () => {
             type={"SUBMIT"}
             onClick={onSubmitSurvey}/>
         </div>
+
+        {isModalOpen && (
+                <Modal
+                message={modalContent.message}
+                buttons={modalContent.buttons} 
+            />
+            )}
 
         </div>
     );

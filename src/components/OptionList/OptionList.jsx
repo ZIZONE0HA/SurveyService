@@ -1,6 +1,6 @@
 import './optionList.css'
-import OptionItem from './OptionItem';
-import Button from './Button';
+import OptionItem from '../OptionItem/OptionItem';
+import Button from '../Button/Button';
 
 const OptionList = ({options, setOptions, optionIdRef, isReadOnly = false}) =>{
     

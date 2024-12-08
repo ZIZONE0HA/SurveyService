@@ -1,7 +1,7 @@
-import Header from "../components/Header";
-import Button from "../components/Button";
+import Header from "../components/Header/Header";
+import Button from "../components/Button/Button";
 import { useNavigate } from "react-router-dom";
-import SurveyInventory from "../components/SurveyInventory";
+import SurveyInventory from "../components/SurveyInventory/SurveyInventory";
 import { useContext } from "react";
 import { StateContext } from "../App";
 

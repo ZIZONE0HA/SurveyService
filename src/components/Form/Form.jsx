@@ -1,8 +1,8 @@
-import { getTodayDate } from '../utils/getTodayDate';
-import Button from './Button';
+import { getTodayDate } from '../../utils/getTodayDate';
+import Button from '../Button/Button';
 import './Form.css'
-import { onDateInputChange } from '../utils/onDateInputChange';
-import QuestionList from './QuestionList';
+import { onDateInputChange } from '../../utils/onDateInputChange';
+import QuestionList from '../QuestionList/QuestionList';
 import { useEffect } from 'react';
 
 
@@ -40,7 +40,7 @@ const Form = ({ surveyData, setSurveyData, onAddQuestion, optionIdRef, isReadOnl
             console.error("Invalid questions value during setQuestions, resetting:", questions);
             questions = []; // 잘못된 상태 복구
         }
-        setSurveyData((prev) => ({ ...prev, questions }));
+        setSurveyData((prev) => ({ ...prev, questions: questions }));
     };
     
     useEffect(() => {
