@@ -5,6 +5,16 @@
 
 <br>
 
+### 시작하기
+해당 프로젝트를 열고 다음과 같이 명령어를 실행해주세요.
+```
+npm i
+```
+```
+npm run dev
+```
+<br><br>
+
 ## 프로젝트 개요
 
 
@@ -29,6 +39,7 @@
 -  JavaScript / CSS / HTML
 -  localStorage를 데이터 저장소로 활용
 
+<br/><br/>
 ## 설계 및 데이터 구조
 
 ### 데이터 구조 설계
@@ -89,18 +100,38 @@
 ```
 
 ### UI/UX 설계
-- 설문 리스트 화면:
-  - 빈 상태: "등록된 설문조사가 없습니다." 메시지 표시.
-  - 우측 상단, 신규 버튼 : 클릭시 [설문조사 등록] 페이지로 이동
-  - 설문 목록: index, 제목, 기간 
-    
-### 설문 상세 화면:
-제목, 설명, 각 질문 및 옵션 표시.
-'수정' 및 '삭제' 버튼 제공.
+- 설문조사 목록 페이지
+  - 빈 상태
+    - "등록된 설문조사가 없습니다." 메시지 표시.
+  - 신규 버튼
+    - 클릭 시, [설문조사 등록 페이지]로 이동
+  - 설문조사 개수 표시
+  - 설문 목록
+    - index, 제목, 기간
+    - 클릭 시, [해당 설문조사의 상세페이지]로 이동
+<br/>
+- 설문조사 등록 페이지
+  - 제목 및 기간 입력 필드.
+  - 질문 컴포넌트
+    - 설문조사 질문
+    - 타입
+    - 옵션 컴포넌트
+    - 필수항목 여부
+    - 질문 삭제 버튼
+  - 질문 타입(checkbox / radio )에 따른 옵션 컴퍼넌트 렌더링
+  - 질문 추가 버튼과 옵션 추가 버튼
+  - 등록하기 버튼
+    - 클릭 시 새 설문조사 등록을 알리는 모달창이 뜨고, 새로운 설문조사 생성- 등록하기 버튼
+  - 뒤로가기 버튼
+    - 클릭 시 작성을 취소하겠냐는 문구와 모달창이 뜸
+    - 아니오 클릭 시 현재 페이지 유지
+    - 예 클릭시 이전페이지([설문조사 목록 페이지])로 이동
+<br/>
+- 설문조사 상세 페이지
+  - 저장된 설문조사 데이터를 기반으로 제목, 기간, 각 질문 및 옵션 표시.
+  - [설문조사 등록 페이지]에 해당되는 정보 읽기 모드로 불러옴
+    -  질문추가, 질문 삭제, 옵션추가 버튼 렌더링 x
 
-### 설문 작성 화면:
-제목 및 설명 입력 필드.
-질문 추가 버튼과 옵션 입력 필드.
 
 
 
@@ -118,6 +149,81 @@ npm run dev
 
 ## 프로젝트 구조
 
+### 폴더 구조
+
+```
+SurveyService
+├─ public
+├─ index.html
+├─ src
+│  ├─ App.css
+│  ├─ App.jsx
+│  ├─ assets
+│  ├─ components
+│  │  ├─ Button
+│  │  │  ├─ Button.css
+│  │  │  └─ Button.jsx
+│  │  ├─ Form
+│  │  │  ├─ Form.css
+│  │  │  └─ Form.jsx
+│  │  ├─ Header
+│  │  │  ├─ Header.css
+│  │  │  └─ Header.jsx
+│  │  ├─ Modal
+│  │  │  ├─ Modal.css
+│  │  │  └─ Modal.jsx
+│  │  ├─ OptionItem
+│  │  │  ├─ OptionItem.css
+│  │  │  └─ OptionItem.jsx
+│  │  ├─ OptionList
+│  │  │  ├─ OptionList.css
+│  │  │  └─ OptionList.jsx
+│  │  ├─ QuestionItem
+│  │  │  ├─ QuestionItem.css
+│  │  │  └─ QuestionItem.jsx
+│  │  ├─ QuestionList
+│  │  │  ├─ QuestionList.css
+│  │  │  └─ QuestionList.jsx
+│  │  ├─ SurveyInventory
+│  │  │  ├─ SurveyInventory.css
+│  │  │  └─ SurveyInventory.jsx
+│  │  └─ SurveyItem
+│  │     ├─ SurveyItem.css
+│  │     └─ SurveyItem.jsx
+│  ├─ index.css
+│  ├─ main.jsx
+│  ├─ mockdata.js
+│  ├─ pages
+│  │  ├─ NotFound.jsx
+│  │  ├─ SurveyCreate.jsx
+│  │  ├─ SurveyList.jsx
+│  │  └─ SurveyView.jsx
+│  └─ utils
+│     ├─ formatDate.js
+│     ├─ getTodayDate.js
+│     └─ onDateInputChange.js
+├─ .gitignore
+├─ eslint.config.js
+├─ package-lock.json
+├─ package.json
+├─ README.md
+└─ vite.config.js
+```
 
 
-## 구현 동작
+
+### 라이브러리
+```
+"devDependencies": {
+    "@eslint/js": "^9.15.0",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "@vitejs/plugin-react": "^4.3.4",
+    "eslint": "^9.15.0",
+    "eslint-plugin-react": "^7.37.2",
+    "eslint-plugin-react-hooks": "^5.0.0",
+    "eslint-plugin-react-refresh": "^0.4.14",
+    "globals": "^15.12.0",
+    "vite": "^6.0.1"
+  }
+```
