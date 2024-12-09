@@ -7,9 +7,6 @@ const QuestionItem = ({question, onUpdateQuestion, onDeleteQuestion, optionIdRef
     const {id, questionText, type, required, options} = question;
 
     //질문 텍스트
-    // const onChangeQuestionText = (e) =>{
-    //     onUpdateQuestion(id,{questionText:e.target.value});
-    // }
     const onChangeQuestionText = (e) => {
         if (isReadOnly) return;
         const newQuestionText = e.target.value;
@@ -30,10 +27,18 @@ const QuestionItem = ({question, onUpdateQuestion, onDeleteQuestion, optionIdRef
         onUpdateQuestion(id,{required:!required});
     }
     //옵션 업데이트
-    const setOptions = (updateOptions) =>{
-        if (isReadOnly) return;
-        onUpdateQuestion(id,{options:updateOptions});
-    }
+    const setOptions = (updateOptions) => {
+        onUpdateQuestion(id, {
+            options:
+                typeof updateOptions === "function"
+                    ? updateOptions(question.options || [])
+                    : updateOptions,
+        });
+    };
+    
+    
+    
+    
     
     return(
         <div className="QuestionItem">

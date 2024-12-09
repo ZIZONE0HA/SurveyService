@@ -3,9 +3,6 @@ import Button from '../Button/Button';
 import './Form.css'
 import { onDateInputChange } from '../../utils/onDateInputChange';
 import QuestionList from '../QuestionList/QuestionList';
-import { useEffect } from 'react';
-
-
 
 const Form = ({ surveyData, setSurveyData, onAddQuestion, optionIdRef, isReadOnly = false}) =>{
     
@@ -30,31 +27,23 @@ const Form = ({ surveyData, setSurveyData, onAddQuestion, optionIdRef, isReadOnl
         );
     };
     //질문
-    // const setQuestions = (questions) =>{
-    //     setSurveyData((prev)=> ({...prev, questions}));
-    // };
-    const setQuestions = (questions) => {
-        //!!!함수가 전달됨!!!? ::
-        console.log("Updating questions to:", questions);
-        if (!Array.isArray(questions)) {
-            console.error("Invalid questions value during setQuestions, resetting:", questions);
-            questions = []; // 잘못된 상태 복구
-        }
-        setSurveyData((prev) => ({ ...prev, questions: questions }));
+    const setQuestions = (updateQuestions) => {
+        setSurveyData((prev) => {
+            const updatedQuestions =
+                typeof updateQuestions === "function"
+                    ? updateQuestions(prev.questions)
+                    : updateQuestions;
+    
+            if (!Array.isArray(updatedQuestions)) {
+                console.error(
+                    "Invalid questions value, resetting:",
+                    updatedQuestions
+                );
+                return { ...prev, questions: [] };
+            }
+            return { ...prev, questions: updatedQuestions };
+        });
     };
-    
-    useEffect(() => {
-        //surveyData.questions 최신상태
-        //배열형태 데이터 정상 출력
-        console.log("surveyData.questions updated to:", surveyData.questions);
-        //surveyData.questions의 데이터 타입
-        //object :: 정상
-        console.log("Type of surveyData.questions:", typeof surveyData.questions);
-        // surveyData.questions가 배열인지
-        //true :: 정상
-        console.log("Is surveyData.questions array:", Array.isArray(surveyData.questions));
-    }, [surveyData.questions]);
-    
 
     return(
         <div className='Form'>
