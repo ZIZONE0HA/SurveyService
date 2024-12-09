@@ -38,8 +38,6 @@ function App() {
   const [data, dispatch] = useReducer(reducer, []); 
   const surveyIdRef = useRef(1);  //설문조사 id
 
-  // const [isLoading, setIsLoading] = useState(true);
-
   useEffect(()=>{
     const storedData = localStorage.getItem("survey");
     if(!storedData){ //storedData 가 undefined / null일 시 종료
@@ -48,7 +46,6 @@ function App() {
 
     const parsedData = JSON.parse(storedData);
     if(!Array.isArray(parsedData)){
-      // setIsLoading(false);
       return;
     }
 
@@ -65,7 +62,6 @@ function App() {
       type:"INIT",
       payload: parsedData,
     });
-    // setIsLoading(false);
   },[]);
 
   //새 설문조사 등록
@@ -81,9 +77,7 @@ function App() {
     });
   }
 
-  // if(isLoading){
-  //   return <div>데이터 로딩중입니다...</div>
-  // }
+
 
   return (
     <>
