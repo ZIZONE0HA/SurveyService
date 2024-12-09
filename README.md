@@ -34,11 +34,12 @@ npm run dev
 <br>
 
 ### 개발환경 및 기술스택
--  React (v18.3.1) / React DOM (v18.3.1) / React Router DOM (v7.0.2)
--  Vite (v6.0.1)
--  ES Module (type: "module")
--  JavaScript / CSS / HTML
--  localStorage를 데이터 저장소로 활용
+- React (v18.3.1) / React DOM (v18.3.1) / React Router DOM (v7.0.2)
+- Vite (v6.0.1)
+- ES Module (type: "module")
+- JavaScript / CSS / HTML
+- 데이터 저장소 : localStorage
+- 배포 :  vercel
 
 
 
