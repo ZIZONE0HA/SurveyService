@@ -10,8 +10,7 @@ const Modal = ({ message, buttons }) => {
                         <button
                             key={index}
                             className="modal_button"
-                            onClick={button.onClick}
-                        >
+                            onClick={button.onClick}>
                             {button.text}
                         </button>
                     ))}

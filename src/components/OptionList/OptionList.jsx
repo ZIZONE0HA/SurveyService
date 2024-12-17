@@ -22,7 +22,7 @@ const OptionList = ({options, setOptions, optionIdRef, isReadOnly = false}) =>{
         setOptions((prev)=>
             prev.map((option)=>
             option.id === id
-            ? {...option, optioniText:newText}
+            ? {...option, optionText:newText}
             : option
             )
         );

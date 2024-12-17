@@ -5,6 +5,7 @@ import Form from "../components/Form/Form";
 import { useContext, useRef, useState } from "react";
 import { DispatchContext } from "../App";
 import Modal from "../components/Modal/Modal";
+import { validateSurvey } from "../utils/validateSurvey";
 
 const SurveyCreate = () => {   
 
@@ -31,7 +32,7 @@ const SurveyCreate = () => {
                 type: "radio",
                 required: true,
                 options: [
-                    { id: 1, optionText: "" },
+                    { id: optionIdRef.current++, optionText: "" },
                 ],
             },
             {
@@ -40,7 +41,7 @@ const SurveyCreate = () => {
                 type: "checkbox",
                 required: true,
                 options: [
-                    { id: 1, optionText: "" },
+                    { id: optionIdRef.current++, optionText: "" },
                 ],
             },
         ],
@@ -49,6 +50,14 @@ const SurveyCreate = () => {
 
     //등록하기
     const onSubmitSurvey = () =>{
+
+        const error = validateSurvey(surveyData);
+
+        if (error) {
+            alert(error); // 첫 번째 에러 메시지만 alert로 표시
+            return; // 실행 중단
+        }
+
         setModalContent({
             message: "새로운 설문조사가 등록되었습니다.",
             buttons: [

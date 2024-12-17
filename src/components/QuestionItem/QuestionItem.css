@@ -31,9 +31,79 @@
     background-color: #F4F4F4;
 }
 
-.QuestionItem label {
+
+
+/* 필수여부 스위치 */
+.QuestionItem .switch_container {
     display: flex;
     align-items: center;
-    gap: 5px;
-    margin-bottom: 10px;
+    gap: 10px;
+}
+
+.QuestionItem .switch {
+    position: relative;
+    display: inline-block;
+    width: 50px; 
+    height: 24px; 
+}
+
+.QuestionItem .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* 슬라이더 */
+.QuestionItem .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: 0.4s;
+    border-radius: 24px;
+    font-size: 10px;
+    color: white;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 8px; 
+}
+
+/* 슬라이더 안의 원 */
+.QuestionItem .slider::after {
+    content: "";
+    position: absolute;
+    height: 18px;
+    width: 18px;
+    background-color: white;
+    border-radius: 50%;
+    transition: 0.4s;
+    left: 4px; /* 기본 왼쪽 위치 */
+}
+
+.QuestionItem .slider::before {
+    position: absolute;
+    content: "OFF";
+    color: white;
+    right: 8px; /* OFF 상태에서 텍스트 오른쪽 */
+    transition: 0.4s;
+}
+
+/* 체크 상태(on) */
+.QuestionItem input:checked + .slider {
+    background-color: #69717D; 
+}
+
+.QuestionItem input:checked + .slider::after {
+    transform: translateX(26px); /* 슬라이더 원을 오른쪽으로 이동 */
+}
+
+.QuestionItem input:checked + .slider::before {
+    content: "ON"; /* ON 텍스트로 변경 */
+    left: 8px; /* 텍스트를 왼쪽으로 이동 */
+    right: auto;
 }

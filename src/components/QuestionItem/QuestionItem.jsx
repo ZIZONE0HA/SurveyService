@@ -10,12 +10,8 @@ const QuestionItem = ({question, onUpdateQuestion, onDeleteQuestion, optionIdRef
     const onChangeQuestionText = (e) => {
         if (isReadOnly) return;
         const newQuestionText = e.target.value;
-        console.log("Current question before update:", question);
-        console.log("New questionText:", newQuestionText);
         onUpdateQuestion(id, { questionText: newQuestionText });
-    };
-    
-
+    }
     //질문타입
     const onChangeType = (e) =>{
         if (isReadOnly) return;
@@ -63,19 +59,25 @@ const QuestionItem = ({question, onUpdateQuestion, onDeleteQuestion, optionIdRef
             
 
             <div className="footer_section">
-                {!isReadOnly && (<Button text={'삭제'} 
+                {!isReadOnly ? (
+                    <Button text={'삭제'} 
                 type={'DELETE'}
                 onClick={() => onDeleteQuestion(id)}/>
+                ) : (
+                    // SurveyView page 에서 필수항목 위치 고정위한 삭제버튼위치 고정
+                    <div className="button_place"></div>
                 )}
-                <label>
-                    <input
+                <div className="switch_container">
+                    <span className="switch_label">필수항목</span>
+                    <label className="switch">
+                        <input
                         type="checkbox"
                         checked={required}
                         onChange={onToggleRequired}
-                        readOnly={isReadOnly}
-                    />
-                    필수항목
-                </label>
+                        readOnly={isReadOnly}/>
+                        <span className="slider"></span>
+                    </label>
+                </div>
             </div>
             
         </div>

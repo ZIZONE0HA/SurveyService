@@ -12,18 +12,11 @@ const Form = ({ surveyData, setSurveyData, onAddQuestion, optionIdRef, isReadOnl
         setSurveyData((prev)=>({...prev, title: e.target.value})
         );
     };
-    //시작일
-    const onChangeStartDate = (e) => {
+    //설문조사 기간
+    const onChangeDate = (key) => (e) => {
         if (isReadOnly) return;
         onDateInputChange(e, (value) =>
-            setSurveyData((prev) => ({ ...prev, startDate: value }))
-        );
-    };
-    //종료일
-    const onChangeEndDate = (e) => {
-        if (isReadOnly) return;
-        onDateInputChange(e, (value) =>
-            setSurveyData((prev) => ({ ...prev, endDate: value }))
+            setSurveyData((prev) => ({ ...prev, [key]: value }))
         );
     };
     //질문
@@ -64,13 +57,13 @@ const Form = ({ surveyData, setSurveyData, onAddQuestion, optionIdRef, isReadOnl
                     <input type="text" 
                     placeholder={getTodayDate()} //오늘 날짜를 palceholder로
                     value={surveyData.startDate}
-                    onChange={onChangeStartDate}
+                    onChange={onChangeDate("startDate")}
                     readOnly={isReadOnly}
                     />
                     <input type="text" 
                     placeholder={getTodayDate(30)} //오늘+30일 뒤를 palceholder로
                     value={surveyData.endDate}
-                    onChange={onChangeEndDate}
+                    onChange={onChangeDate("endDate")}
                     readOnly={isReadOnly}
                     />
                 </div>
