@@ -8,12 +8,12 @@ export const validateSurvey = (surveyData) =>{
 }
 
     // 날짜 검사
-    const { isValid: isStartValid } = formatDate(surveyData.startDate.replace(/\D/g, ''));
+    const { isValid: isStartValid } = formatDate(surveyData.startDate);
     if (!isStartValid) {
         return "시작일을 입력해주세요.";
     }
 
-    const { isValid: isEndValid } = formatDate(surveyData.endDate.replace(/\D/g, ''));
+    const { isValid: isEndValid } = formatDate(surveyData.endDate);
     if (!isEndValid) {
         return "종료일을 입력해주세요.";
     }

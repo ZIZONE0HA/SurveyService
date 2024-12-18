@@ -4,8 +4,8 @@ import SurveyView from './pages/SurveyView'
 import SurveyList from './pages/SurveyList'
 import SurveyCreate from './pages/SurveyCreate'
 import NotFound from './pages/NotFound'
-import { useReducer, useRef, createContext, useEffect, useState } from 'react'
-import mockdata from './mockdata'
+import { useReducer, useRef, createContext, useEffect} from 'react'
+
 
 export const StateContext = createContext();
 export const DispatchContext = createContext();
@@ -32,12 +32,11 @@ function reducer(state, action) {
 }
 
 function App() {
-  // 테스트 시, 아래(37,38) 코드 주석처리하시고, 이 코드를 주석해제하시면 mockdata를 통해 구현 화면 확인 가능합니다.
-  // const [data, dispatch] = useReducer(reducer, mockdata); 
-  // const surveyIdRef = useRef(mockdata.length+1);  //설문조사 id
+
   const [data, dispatch] = useReducer(reducer, []); 
   const surveyIdRef = useRef(1);  //설문조사 id
 
+  //데이터 초기화
   useEffect(()=>{
     const storedData = localStorage.getItem("survey");
     if(!storedData){ //storedData 가 undefined / null일 시 종료

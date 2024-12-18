@@ -13,11 +13,10 @@ const SurveyCreate = () => {
     const questionIdRef = useRef(1);  //질문 id
     const optionIdRef = useRef(1);  //옵션 id
     const { onCreateSurvey } = useContext(DispatchContext);
+    
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [modalContent, setModalContent] = useState({
         message: "",
-        onConfirm: null,
-        onCancel: null,
         buttons: [],
     });
 
@@ -51,13 +50,16 @@ const SurveyCreate = () => {
     //등록하기
     const onSubmitSurvey = () =>{
 
+        //유효성 검증
         const error = validateSurvey(surveyData);
 
+        //오류
         if (error) {
-            alert(error); // 첫 번째 에러 메시지만 alert로 표시
-            return; // 실행 중단
+            alert(error); 
+            return; 
         }
 
+        //등록성공
         setModalContent({
             message: "새로운 설문조사가 등록되었습니다.",
             buttons: [
@@ -81,7 +83,7 @@ const SurveyCreate = () => {
             questions:[
                 ...prev.questions,
                 {
-                    id:questionIdRef.current++,
+                    iㅑㅕ:questionIdRef.current++,
                     questionText:"",
                     type:"radio",
                     required:true,

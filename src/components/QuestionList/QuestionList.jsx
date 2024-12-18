@@ -3,7 +3,7 @@ import QuestionItem from "../QuestionItem/QuestionItem";
 const QuestionList = ({ questions = [], setQuestions, optionIdRef, isReadOnly = false }) => {
     // 질문 업데이트
     const onUpdateQuestion = (id, updatedQuestion) => {
-        if (isReadOnly) return; // 읽기 전용 상태에서는 아무 작업도 수행하지 않음
+        if (isReadOnly) return; // 읽기 전용 상태 (수정/삭제 비활)
         setQuestions((prev) =>
             prev.map((q) => (q.id === id ? { ...q, ...updatedQuestion } : q))
         );
